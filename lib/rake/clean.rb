@@ -15,7 +15,7 @@
 
 require 'rake'
 
-CLEAN = Rake::FileList["**/*~", "**/*.bak", "**/core"]
+CLEAN = Rake::FileList["**/*~", "**/*.bak", "**/core", ".rake/*"]
 CLEAN.clear_exclude.exclude { |fn| 
   fn.pathmap("%f") == 'core' && File.directory?(fn) 
 }

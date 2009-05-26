@@ -35,6 +35,19 @@ def file_create(args, &block)
   Rake::FileCreationTask.define_task(args, &block)
 end
 
+# Declare an event task.
+#
+# Example:
+#   event :load_probes => [:load_individuals] do
+#     File.open("my_file.txt").each do |line|
+#       probe_name, individual_id = line.chomp.split(/\t/)
+#       Probe.new(:name => probe_name, :individual_id => individual_id).new.save
+#     end
+#   end
+def event(*args, &block)
+  Rake::EventTask.define_task(*args, &block)
+end
+
 # Declare a set of files tasks to create the given directories on demand.
 #
 # Example:
